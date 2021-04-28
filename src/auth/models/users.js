@@ -8,7 +8,6 @@ process.env.SECRET = 'toes'
 const users = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // ADDED
 });
 
 // Adds a virtual field to the schema. We can see it, but it never persists
