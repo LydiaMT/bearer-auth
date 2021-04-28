@@ -16,7 +16,7 @@ users.virtual('token').get(function () {
   let tokenObject = {
     username: this.username,
   }
-  return jwt.sign(tokenObject, process.env.SECRET)
+  return jwt.sign(tokenObject, process.env.SECRET, { expiresIn: '30m' })
 });
 
 users.pre('save', async function () {
@@ -44,6 +44,5 @@ users.statics.authenticateWithToken = async function (token) {
     throw new Error(e.message)
   }
 }
-
 
 module.exports = mongoose.model('users', users);
